@@ -12,7 +12,7 @@ def get_names(spicy_foods)
   end
 end
 
-def spiciest_food(spicy_foods)
+def spiciest_foods(spicy_foods)
   spicy_foods.filter do |food|
     if food[:heat_level] > 5
       food
@@ -20,16 +20,15 @@ def spiciest_food(spicy_foods)
   end
 end
 
-def print_spicy_foods(spicy_foods)
-  spicy_foods.each do |food|
-    puts "#{food[:name]} (#{food[:cuisine]}) | Heat Level: #{'🌶' * food[:heat_level]}"
-  end
-
-end
-
 def get_spicy_food_by_cuisine(spicy_foods, cuisine)
   spicy_foods.find do |food|
     food[:cuisine] == cuisine
+  end
+end
+
+def print_spicy_foods(spicy_foods)
+  spicy_foods.each do |food|
+    puts "#{food[:name]} (#{food[:cuisine]}) | Heat Level: #{'🌶' * food[:heat_level]}"
   end
 end
 
@@ -45,9 +44,9 @@ def print_spiciest_foods(spicy_foods)
 end
 
 def average_heat_level(spicy_foods)
-  heat = 0
+  total_heat_level = 0
   spicy_foods.each do |food|
-    heat += food[:heat_level]
+    total_heat_level += food[:heat_level]
   end
-  heat / spicy_foods.length
+  total_heat_level / spicy_foods.length
 end
